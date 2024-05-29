@@ -244,7 +244,6 @@ void potentiometers() {
     responsivePot[i].update(reading);
     potCState[i] = responsivePot[i].getValue();
 
-    potCState[i] = analogRead(POT_ARDUINO_PIN[i]);  // lê os pinos do arduino
 
     midiCState[i] = map(potCState[i], potMin, potMax, 0, 127);  // Mapeia a leitura de potCState para um valor utilizável em midi
     //midiCState[i] = map(potCState[i], 0, 4096, 0, 127);  // Mapeia a leitura de potCState para um valor utilizável em midi - usar para ESP32

@@ -24,7 +24,7 @@
 // "DEBUG" if you just want to debug the code in the serial monitor
 // you don't need to comment or uncomment any MIDI library below after you define your board
 
-#define ATMEGA32U4 1  // put here the uC you are using, like in the lines above followed by "1", like "ATMEGA328 1", "DEBUG 1", etc.
+#define DEBUG 1  // put here the uC you are using, like in the lines above followed by "1", like "ATMEGA328 1", "DEBUG 1", etc.
 
 /////////////////////////////////////////////
 // Are you using buttons?
@@ -243,8 +243,6 @@ void potentiometers() {
     reading = analogRead(POT_ARDUINO_PIN[i]);
     responsivePot[i].update(reading);
     potCState[i] = responsivePot[i].getValue();
-
-    potCState[i] = analogRead(POT_ARDUINO_PIN[i]);  // reads the pins from arduino
 
     midiCState[i] = map(potCState[i], potMin, potMax, 0, 127);  // Maps the reading of the potCState to a value usable in midi
     //midiCState[i] = map(potCState[i], 0, 4096, 0, 127);  // Maps the reading of the potCState to a value usable in midi - use for ESP32
